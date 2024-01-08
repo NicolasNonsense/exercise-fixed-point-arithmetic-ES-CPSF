@@ -58,9 +58,11 @@ public:
    * @param In
    * @return Fixp
    */
+   //Addieren
   template <class TIn, TIn FracBitsIn>
-  Fixp operator+(Fixp<TIn, FracBitsIn> In) {
-  }
+    Fixp<T, FracBits> operator+(Fixp<TIn, FracBitsIn> In) {
+    return Fixp<T, FracBits>(Value + In.Value);
+  } 
 
   /**
    * @brief Substraction of two fixed points.
@@ -72,22 +74,27 @@ public:
    * @param In
    * @return Fixp
    */
+   //minus 
   template <class TIn, TIn FracBitsIn>
-  Fixp operator-(Fixp<TIn, FracBitsIn> In) {
-  }
+    Fixp<T, FracBits> operator-(Fixp<TIn, FracBitsIn> In) {
+    return Fixp<T, FracBits>(Value - In.Value);
+  } 
 
   /**
    * @brief Multiplication of two fixed points.
    *        The resulting fixed point will use the sum of both FracBits.
    *
-   * @tparam TIn
+   * @tparam TIn  
    * @tparam FracBitsIn
    * @param In
    * @return Fixp<T, FracBits + FracBitsIn>
    */
-  template <class TIn, TIn FracBitsIn>
-  Fixp<T, FracBits + FracBitsIn> operator*(Fixp<TIn, FracBitsIn> In) {
+  //multiplizierer
+template <class TIn, TIn FracBitsIn>
+  Fixp<T, (T)((FracBits + FracBitsIn))> operator*(Fixp<TIn, FracBitsIn> In) {
+    return Fixp<T, (T)((FracBits + FracBitsIn))>((T)Value * In.Value);
   }
+
 
   /**
    * @brief Division of two fixed points.
